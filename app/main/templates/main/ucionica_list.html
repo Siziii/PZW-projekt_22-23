@@ -1,0 +1,17 @@
+{% block content %}
+    <h2>Učionice</h2>
+    <ul>
+        {% for ucionica in object_list %}
+            <li>
+                Broj učionice: {{ ucionica.ucionica_broj}}<br>
+            </li>
+            <li>
+                Broj kvadratnih metara u učionici: {{ucionica.ucionica_kvadratura}} <br>
+            </li>
+            <li>
+                Predmet koji se održava u učionici: {{ucionica.predmet}} <br>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock %}

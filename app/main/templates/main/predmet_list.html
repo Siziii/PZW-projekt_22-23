@@ -1,0 +1,17 @@
+{% block content %}
+    <h2>Predmeti</h2>
+    <ul>
+        {% for predmet in object_list %}
+            <li>
+                Naziv predmeta: {{ predmet.predmet_naziv }}<br>
+            </li>
+            <li>
+                Predavač predmeta: {{predmet.predmet_predavac}} <br>
+            </li>
+            <li>
+                Opis predmeta: {{ predmet.predmet_opis }} <br>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block content %}
+    <h2>Profesori</h2>
+    <ul>
+        {% for profesor in object_list %}
+            <li>
+                Ime: {{ profesor.profesor_ime}}<br>
+            </li>
+            <li>
+                Prezime: {{profesor.profesor_prezime}} <br>
+            </li>
+            <li>
+                Plaća: {{ profesor.profesor_placa }} kn <br>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock %}

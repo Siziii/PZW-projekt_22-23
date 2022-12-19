@@ -1,0 +1,27 @@
+{% block content %}
+    <h2>Učenici</h2>
+    <ul>
+        {% for ucenik in object_list %}
+            <li>
+                Ime: {{ ucenik.ucenik_ime}}<br>
+            </li>
+            <li>
+                Prezime: {{ucenik.ucenik_prezime}} <br>
+            </li>
+            <li>
+                
+                Upisani predmeti:  
+                <ul>
+                {% for i in ucenik.ucenik_predmeti.all %}
+                <li>
+                    {{i.predmet_naziv}}
+                </li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>
+                Razrednik: {{ ucenik.ucenik_razrednik}} <br> <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
