@@ -5,6 +5,8 @@ from main.views import ProfesorList, UcenikList, UcionicaList, PredmetList
 app_name = 'main'  # here for namespacing of urls.
 
 urlpatterns = [
+    
+    path('', views.homepage, name='homepage'),
     path('profesori/', ProfesorList.as_view()),
     path('ucenici/', UcenikList.as_view()),
     path('ucionice/', UcionicaList.as_view()),
