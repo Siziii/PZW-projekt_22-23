@@ -13,7 +13,7 @@ from main.factory import (
 
 NUM_PROFESORI = 15
 NUM_UCENICI = 50
-NUM_UCIONICE = 12
+NUM_PREDMETI = 12
 
 class Command(BaseCommand):
     help = "Generates test data"
@@ -27,9 +27,19 @@ class Command(BaseCommand):
 
         self.stdout.write("Creating new data...")
 
+        predmeti=[]
         for _ in range(NUM_PROFESORI):
             profesor = ProfesorFactory()
+
+        for _ in range(NUM_PREDMETI):
+            predmet = PredmetFactory()
+            predmeti.append(predmet)
+
         for _ in range(NUM_UCENICI):
             ucenik = UcenikFactory()
-        for _ in range(NUM_UCIONICE):
-            ucionica = UcionicaFactory()
+            predmetii = random.choices(
+                predmeti,
+                k=12
+            )
+            ucenik.ucenik_predmeti.add(*predmetii)
+            

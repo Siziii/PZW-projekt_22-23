@@ -10,9 +10,7 @@ class Profesor(models.Model):
     def __str__(self):
         return f"{self.profesor_ime} {self.profesor_prezime}"
 
-
-class Ucionica(models.Model):
-    
+class Ucionica(models.Model): 
     ucionica_broj = models.PositiveIntegerField()
     ucionica_kvadratura = models.PositiveIntegerField()
     def __str__(self):
@@ -45,8 +43,6 @@ class Ucenik(models.Model):
         return f"{self.ucenik_ime} {self.ucenik_prezime}"
     class Meta:
         verbose_name_plural = "Ucenici"
-
-
  
 
 # Create your models here.

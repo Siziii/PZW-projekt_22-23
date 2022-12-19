@@ -14,10 +14,17 @@ class ProfesorFactory(DjangoModelFactory):
     profesor_prezime = factory.Faker("last_name")
     profesor_placa = factory.fuzzy.FuzzyInteger(8000, 12000)
 
+class UcionicaFactory(DjangoModelFactory):
+    class Meta:
+        model = Ucionica
+    
+    ucionica_broj = factory.Sequence(lambda n : "{}".format(n+1))
+    ucionica_kvadratura = factory.fuzzy.FuzzyInteger(50, 80)
 
 class PredmetFactory(DjangoModelFactory):
     class Meta:
         model = Predmet
+    ucionica = factory.SubFactory(UcionicaFactory)
     predmet_naziv = factory.Iterator(["Matematika","Hrvatski","Engleski","Tjelesna i zdravstvena", "Priroda i društvo", "Povijest","Geografija","Fizika","Biologija","Tehnička kultura","Likovna kultura","Kemija"])
     predmet_opis = factory.Faker("sentence", nb_words=20)
     predmet_predavac = factory.Iterator(Profesor.objects.all())
@@ -29,9 +36,3 @@ class UcenikFactory(DjangoModelFactory):
     ucenik_prezime = factory.Faker("last_name")
     ucenik_razrednik = factory.Iterator(Profesor.objects.all())
 
-class UcionicaFactory(DjangoModelFactory):
-    class Meta:
-        model = Ucionica
-    predmet = factory.SubFactory(PredmetFactory)
-    ucionica_broj = factory.Sequence(lambda n : "{}".format(n+1))
-    ucionica_kvadratura = factory.fuzzy.FuzzyInteger(50, 80)
